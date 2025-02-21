@@ -1,8 +1,11 @@
 import React from "react"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import OnboardingScreen from "../Screens/OnboardingScreens"
+import TabsNavigator,{TabsStackParams} from "./TabNavigator"
+import { NavigatorScreenParams } from "@react-navigation/native"
 export type RootStackParams = {
     OnboardingScreen: undefined
+    TabsStack: NavigatorScreenParams<TabsStackParams>
 }
 
 const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -14,6 +17,11 @@ const RootNavigator = () => {
                 name="OnboardingScreen"
                 component={OnboardingScreen}
                 options={{ headerShown: false }}
+            />
+            <RootStack.Screen
+                name = "TabsStack"
+                component ={TabsNavigator}
+                options = {{headerShown:false}}
             />
         </RootStack.Navigator>
     )

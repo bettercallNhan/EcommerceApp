@@ -7,6 +7,7 @@ import Animated,{ useAnimatedRef, useAnimatedScrollHandler, useSharedValue} from
 import OnboardingItems from "../Components/OnboardingComponents/OnboardingItems";
 import { FlatList } from "react-native-reanimated/lib/typescript/Animated";
 import OnboardingPagination from "../Components/OnboardingComponents/OnboardingPagination";
+import OnboardingButtons from "../Components/OnboardingComponents/OnboardingButtons";
 type Props = {}
 const OnboardingScreen= ({ navigation,route}: RootStackScreenProps<"OnboardingScreen">)=>{
     const [onboardingItems, setOnboardingItems] = useState<OnboardingPrograms[]>(OnboardingData)
@@ -54,6 +55,11 @@ const onViewableItemsChanged = ({
                 }}
             >
                 <OnboardingPagination item= {onboardingItems} x={x}/>
+                <OnboardingButtons
+                    x={x} itemLength={onboardingItems.length}
+                    FlatListRef={flatListRef}
+                    FlatListIndex={flatListIndex}
+                />
             </View>
         </View>
     )
