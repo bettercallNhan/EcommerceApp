@@ -23,14 +23,21 @@ export const createProduct = async (req: Request, res: Response) => {
         res.status(500).json(`Failed to create Product ${error}`)
     }
 }
-
-export const getProductByCateID = async (req: Request, res: Response) => {
-    console.log(req.params.CateID)
+export const getTrendingProducts = async (req:Request,res: Response)=>{
     try {
-        const result = await PRODUCTS.find({category: req.params.CateID})
+        const result = await PRODUCTS.find({isFeatured:true}).sort({createAt: -1 }).limit(4)
+        res.status(200).json(result)
+    }catch (error){
+        res.status(500).json(`failed ${error}:-(`)
+    }
+}
+export const getProductsByCatID = async (req: Request, res: Response) => {
+    console.log(req.params.CatID)
+    try {
+        const result = await PRODUCTS.find({category: req.params.CatID})
         res.status(200).json(result)
     } catch (error) {
-        res.status(500).json(`ProductByCateID fetch failed ${error}`)
+        res.status(500).json(`ProductByCatID fetch failed ${error}`)
     }
 }
 

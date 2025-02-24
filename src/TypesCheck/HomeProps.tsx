@@ -4,13 +4,15 @@ export interface ProductListParams{
     name:string;
     price:number;
     oldPrice?:number;
-    inStock?:number;
+    inStock?:boolean;
     color?:string;
     size?:string;
     description?:string;
     quantity:number
+    isFeatured?: boolean; // ✅ Thêm dòng này
+    category?: string; // ✅ Thêm dòng này
 }
-export interface FetchProductsPara{
+export interface FetchProductsParam{
     data:{
         Producst: ProductListParams[]
         results: ProductListParams[]

@@ -3,8 +3,8 @@ import React from 'react'
 import { ICatProps } from '../TypesCheck/CategoryTypes'
 
 export const CategoryCard = ({item,catProps,catStyleProps}:ICatProps) => {
-    let isAcitave = item._id == catProps.activateCat;
-    let activeButtonClass = isAcitave ? 'orange':"#eee"// change color khi no active
+    let isActive = item._id === catProps.activateCat;
+    let activeButtonClass = isActive ? 'orange':"#eee"// change color khi no active
     return (
         <View>
             {catProps.imageBg!== undefined?(
